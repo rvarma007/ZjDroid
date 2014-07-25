@@ -33,7 +33,7 @@ package org.keplerproject.luajava;
  */
 public class LuaState
 {
-  private final static String LUAJAVA_LIB = "luajava";
+  private final static String LUAJAVA_LIB = "/data/data/com.android.reverse/lib/libluajava.so";
 
   final public static Integer LUA_GLOBALSINDEX  = new Integer(-10002);
   final public static Integer LUA_REGISTRYINDEX = new Integer(-10000);
@@ -89,7 +89,7 @@ public class LuaState
    */
   static
   {
-    System.loadLibrary(LUAJAVA_LIB);
+    System.load(LUAJAVA_LIB);
   }
 
   private CPtr luaState;

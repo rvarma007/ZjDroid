@@ -1,6 +1,5 @@
 package com.android.reverse.collecter;
 
-import java.lang.reflect.Method;
 import org.keplerproject.luajava.JavaFunction;
 import org.keplerproject.luajava.LuaException;
 import org.keplerproject.luajava.LuaState;
@@ -8,16 +7,12 @@ import org.keplerproject.luajava.LuaStateFactory;
 
 import com.android.reverse.hook.HookHelperFacktory;
 import com.android.reverse.hook.HookHelperInterface;
-import com.android.reverse.hook.HookParam;
-import com.android.reverse.hook.MethodHookCallBack;
 import com.android.reverse.util.JsonWriter;
 import com.android.reverse.util.Logger;
-import com.android.reverse.util.RefInvoke;
 
 public class LuaScriptInvoker{
 	
 	private static LuaScriptInvoker luaInvoker;
-	private final static String LUAJAVA_LIB = "luajava";
 	private HookHelperInterface hookhelper = HookHelperFacktory.getHookHelper();
 
 	
@@ -30,28 +25,6 @@ public class LuaScriptInvoker{
 		if(luaInvoker == null)
 			luaInvoker = new LuaScriptInvoker();
 		return luaInvoker;
-	}
-	
-	public void start(){
-		Method findLibraryMethod = RefInvoke.findMethodExact("dalvik.system.BaseDexClassLoader", ClassLoader.getSystemClassLoader(), "findLibrary",
-				String.class);
-		hookhelper.hookMethod(findLibraryMethod, new MethodHookCallBack() {
-
-			@Override
-			public void beforeHookedMethod(HookParam param) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterHookedMethod(HookParam param) {
-				Logger.log((String) param.args[0]);
-				if (LUAJAVA_LIB.equals(param.args[0]) && param.getResult() == null) {
-					param.setResult("/data/data/com.android.reverse/lib/libluajava.so");
-				}
-			}
-		});
-		
 	}
 	
 	private void initLuaContext(LuaState luaState){

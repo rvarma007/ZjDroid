@@ -27,7 +27,6 @@ public class DexFileInfoCollecter{
 	private static HashMap<String, DexFileInfo> dynLoadedDexInfo = new HashMap<String, DexFileInfo>();
 	private static DexFileInfoCollecter collecter;
 	private HookHelperInterface hookhelper = HookHelperFacktory.getHookHelper();
-	private final static String DVMLIB_LIB = "dvmnative";
 
 	private DexFileInfoCollecter() {
 
@@ -81,25 +80,6 @@ public class DexFileInfoCollecter{
             	   int mCookie = (Integer) param.args[2];
             	   setDefineClassLoader(mCookie,(ClassLoader) param.args[1]);
                }
-			}
-		});
-		
-		Method findLibraryMethod = RefInvoke.findMethodExact("dalvik.system.BaseDexClassLoader", ClassLoader.getSystemClassLoader(), "findLibrary",
-				String.class);
-		hookhelper.hookMethod(findLibraryMethod, new MethodHookCallBack() {
-
-			@Override
-			public void beforeHookedMethod(HookParam param) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterHookedMethod(HookParam param) {
-				Logger.log((String) param.args[0]);
-				if (DVMLIB_LIB.equals(param.args[0]) && param.getResult() == null) {
-					param.setResult("/data/data/com.android.reverse/lib/libdvmnative.so");
-				}
 			}
 		});
 	}

@@ -27,7 +27,6 @@ public class ReverseXposedModule implements IXposedHookLoadPackage {
 		  PackageMetaInfo pminfo = PackageMetaInfo.fromXposed(lpparam);
 		  ModuleContext.getInstance().initModuleContext(pminfo);
 		  DexFileInfoCollecter.getInstance().start();
-		  LuaScriptInvoker.getInstance().start();
 		  ApiMonitorHookManager.getInstance().startMonitor();
 		}else{
 			

@@ -13,10 +13,10 @@ import com.android.reverse.smali.DexFileHeadersPointer;
 
 public class NativeFunction implements MemoryReader {
 	
-	private final static String DVMNATIVE_LIB = "dvmnative";
+	private final static String DVMNATIVE_LIB = "/data/data/com.android.reverse/lib/libdvmnative.so";
 	
 	static{
-		System.loadLibrary(DVMNATIVE_LIB);
+		System.load(DVMNATIVE_LIB);
 	}	
 	
 	public static native ByteBuffer dumpDexFileByClass(Class classInDex,int version);
