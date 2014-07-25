@@ -274,7 +274,15 @@ public class MemoryBackSmali {
 			list.add("/system/framework/services.jar");
 			list.add("/system/framework/apache-xml.jar");
 		}
-		return list;
+		//filter the file which can't exists
+		List<String> listresult = new ArrayList<String>();
+		File file = null;
+		for(int i=0 ;i<list.size(); i++){
+			file = new File(list.get(i));
+			if(file.exists())
+				listresult.add(list.get(i));
+		}
+		return listresult;
 	}
 
 }
