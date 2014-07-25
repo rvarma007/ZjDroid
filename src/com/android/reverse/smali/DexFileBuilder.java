@@ -124,6 +124,8 @@ public class DexFileBuilder {
 	private static boolean assembleSmaliFile(File smaliFile,
 			DexBuilder dexBuilder, boolean verboseErrors, boolean printTokens,
 			boolean allowOdex, int apiLevel) throws Exception {
+		
+		Logger.log("start assemble the file = " + smaliFile.getName());
 		CommonTokenStream tokens;
 
 		LexerErrorInterface lexer;

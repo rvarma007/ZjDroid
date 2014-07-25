@@ -155,7 +155,7 @@ public class MemoryBackSmali {
 		if (!classdf.isValid())
 			return false;
 		String classDescriptor = classDef.getType();
-		//Logger.log("start backsmali the class = " + classDescriptor);
+		Logger.log("start backsmali the class = " + classDescriptor);
 		// validate that the descriptor is formatted like we expect
 		if (classDescriptor.charAt(0) != 'L'
 				|| classDescriptor.charAt(classDescriptor.length() - 1) != ';') {
