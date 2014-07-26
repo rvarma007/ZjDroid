@@ -26,7 +26,8 @@ public class AlarmManagerHook extends ApiMonitorHook {
 			public void descParam(HookParam param) {
 				Logger.log_behavior("The Alarm Information:");
 				PendingIntent intent = (PendingIntent) param.args[4];
-				descPendingIntent(intent);
+				if(intent != null)
+				   descPendingIntent(intent);
 				Logger.log_behavior("TriggerAtMillis = "+param.args[1]);
 				Logger.log_behavior("windowMillis = "+param.args[2]);
 				Logger.log_behavior("intervalMillis = "+param.args[3]);
