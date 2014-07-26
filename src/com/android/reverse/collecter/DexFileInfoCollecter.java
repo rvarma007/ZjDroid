@@ -44,6 +44,7 @@ public class DexFileInfoCollecter{
 
 		Method openDexFileNativeMethod = RefInvoke.findMethodExact("dalvik.system.DexFile", ClassLoader.getSystemClassLoader(), "openDexFileNative",
 				String.class, String.class, int.class);
+		
 		if(openDexFileNativeMethod == null){
 			openDexFileNativeMethod = RefInvoke.findMethodExact("dalvik.system.DexFile", ClassLoader.getSystemClassLoader(), "openDexFile",
 					String.class, String.class, int.class);
@@ -70,6 +71,12 @@ public class DexFileInfoCollecter{
 		
 		Method defineClassNativeMethod = RefInvoke.findMethodExact("dalvik.system.DexFile", ClassLoader.getSystemClassLoader(), "defineClassNative",
 				String.class, ClassLoader.class,int.class);
+		
+		if(defineClassNativeMethod == null){
+			defineClassNativeMethod = RefInvoke.findMethodExact("dalvik.system.DexFile", ClassLoader.getSystemClassLoader(), "defineClass",
+					String.class, ClassLoader.class,int.class);
+		}
+			
 		hookhelper.hookMethod(defineClassNativeMethod, new MethodHookCallBack() {
 
 			@Override
