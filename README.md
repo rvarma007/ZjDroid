@@ -20,13 +20,13 @@ ZjDroid是基于Xposed Framewrok的动态逆向分析模块，逆向分析者可
 二、ZjDroid相关命令
 
 1、获取APK当前加载DEX文件信息：
-adb shell am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dexinfo"}'
+am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dexinfo"}'
 
 2、获取指定DEX文件包含可加载类名：
-adb shell am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_class","dexpath":"*****"}'
+am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_class","dexpath":"*****"}'
 
 4、根据Dalvik相关内存指针动态反编译指定DEX，并以文件形式保存。
-adb shell am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"backsmali","dexpath":"*****"}'
+am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"backsmali","dexpath":"*****"}'
 
 该方式可以脱壳目前大部分流行的加固防护。(由于手机性能问题，运行较忙)
 例外情况：
@@ -37,21 +37,21 @@ adb shell am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action"
 从启设备即可。
 
 5、Dump指定DEX内存中的数据并保存到文件（数据为odex格式，可在pc上反编译）。
-adb shell am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dex","dexpath":"*****"}'
+am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_dex","dexpath":"*****"}'
 
 
 6、Dump指定内存空间区域数据到文件
-adb shell am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_mem","start":1234567,"length":123}'
+am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_mem","start":1234567,"length":123}'
 
 7、Dump Dalvik堆栈信息到文件，文件可以通过java heap分析工具分析处理。
-adb shell am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_heap"}'
+am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"dump_heap"}'
 
 8、运行时动态调用Lua脚本
 该功能可以通过Lua脚本动态调用java代码。
 使用场景：
 可以动态调用解密函数，完成解密。
 可以动态触发特定逻辑。
-adb shell am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"invoke","filepath":"****"}'
+am broadcast -a com.zjdroid.invoke --ei target pid --es cmd '{"action":"invoke","filepath":"****"}'
 
 luajava相关使用方法：
 http://www.keplerproject.org/luajava/
