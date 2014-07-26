@@ -6,7 +6,6 @@ public class DexFileInfo {
 	private int mCookie;
 	private ClassLoader defineClassLoader;
 
-	
 	public DexFileInfo(String dexPath,int mCookie) {
 		super();
 		this.dexPath = dexPath;
@@ -41,7 +40,4 @@ public class DexFileInfo {
 	public void setDexPath(String dexPath) {
 		this.dexPath = dexPath;
 	}
-
-
-
 }

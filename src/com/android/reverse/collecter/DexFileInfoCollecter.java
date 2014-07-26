@@ -120,7 +120,6 @@ public class DexFileInfoCollecter{
 			Logger.log("the cookie is not right");
 		}
 		return null;
-
 	}
 
 	public void backsmaliDexFile(String filename, String dexPath) {
@@ -165,6 +164,7 @@ public class DexFileInfoCollecter{
 						e1.printStackTrace();
 					}
 				}
+				out.close();
 			} else {
 				Logger.log("the cookie is not right");
 			}
