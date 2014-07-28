@@ -14,7 +14,7 @@ import com.android.reverse.hook.HookHelperFacktory;
 import com.android.reverse.hook.HookHelperInterface;
 import com.android.reverse.hook.HookParam;
 import com.android.reverse.hook.MethodHookCallBack;
-import com.android.reverse.smali.MemoryBackSmali;
+import com.android.reverse.smali.MemoryBaksmali;
 import com.android.reverse.util.Logger;
 import com.android.reverse.util.NativeFunction;
 import com.android.reverse.util.RefInvoke;
@@ -122,14 +122,14 @@ public class DexFileInfoCollecter{
 		return null;
 	}
 
-	public void backsmaliDexFile(String filename, String dexPath) {
+	public void baksmaliDexFile(String filename, String dexPath) {
 		File file = new File(filename);
 		try {
 			if (!file.exists())
 				file.createNewFile();
 			int mCookie = this.getCookie(dexPath);
 			if (mCookie != 0) {
-				MemoryBackSmali.disassembleDexFile(mCookie, filename);
+				MemoryBaksmali.disassembleDexFile(mCookie, filename);
 			} else {
 				Logger.log("the cookie is not right");
 			}

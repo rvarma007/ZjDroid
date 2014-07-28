@@ -32,7 +32,7 @@ import com.android.reverse.util.Logger;
 import com.android.reverse.util.NativeFunction;
 import com.google.common.collect.Ordering;
 
-public class MemoryBackSmali {
+public class MemoryBaksmali {
 
 	private static baksmaliOptions configOptions() {
 
@@ -155,7 +155,7 @@ public class MemoryBackSmali {
 		if (!classdf.isValid())
 			return false;
 		String classDescriptor = classDef.getType();
-		Logger.log("start backsmali the class = " + classDescriptor);
+		Logger.log("start baksmali the class = " + classDescriptor);
 		// validate that the descriptor is formatted like we expect
 		if (classDescriptor.charAt(0) != 'L'
 				|| classDescriptor.charAt(classDescriptor.length() - 1) != ';') {
